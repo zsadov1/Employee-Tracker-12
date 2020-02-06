@@ -2,7 +2,6 @@ const inquirier = require("inquirer");
 const connection = require('./connection');
 
 
-
 const viewOptions = [
     "View Departments",
     "View Roles",
@@ -29,7 +28,7 @@ const updateOptions = [
     "Exit"
 ];
 
-function runSearch() {
+const runSearch = function runSearch() {
     inquirier.prompt ({
         name:"action",
         type: "list",
@@ -58,7 +57,7 @@ function runSearch() {
                 break
         }
     })
-}
+};
 
 function departmentView() {
     let sqlStr = 'SELECT * FROM department';
@@ -68,7 +67,10 @@ function departmentView() {
         console.table(result)
         runSearch();
     })
-}
+};
+
+
+
 
 function employeeView() {
     let sqlStr = "SELECT * FROM employee";
@@ -80,7 +82,7 @@ function employeeView() {
         console.table(result)
         runSearch();
     })
-}
+};
 
 function roleView() {
     let sqlStr = 'SELECT * FROM role';
@@ -90,7 +92,7 @@ function roleView() {
         console.table(result)
         runSearch();
     })
-}
+};
 
 runSearch();
 
@@ -104,4 +106,4 @@ const updateEmployee = () => {
         })
     }
     runUpdateSearch(); 
-}
+};

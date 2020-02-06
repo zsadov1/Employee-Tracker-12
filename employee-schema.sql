@@ -12,12 +12,54 @@ CREATE TABLE department(
 CREATE TABLE role (
     id INTEGER auto_increment not null,
     title VARCHAR(30) not null,
-    salary DECIMAL not null
+    salary DECIMAL not null,
+    department_id INTEGER not null,
+    CONSTRAINT fk_department_id foreign key (department_id) REFERENCES department(id),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE employee(
     id INTEGER auto_increment not null,
     first_name VARCHAR(30) not null, 
     last_name  VARCHAR(30) not null,
-    role_id INTEGER not null
+    role_id INTEGER not null,
+    CONSTRAINT fk_role_id foreign key (role_id) REFERENCES role(id),
+    manager_id INTEGER,
+    CONSTRAINT fk_manager_id FOREIGN KEY (manager_id) REFERENCES employee(id),
+    PRIMARY KEY(id)
 );
+
+SELECT * from employee;
+SELECT * from role;
+SELECT * from department;
+
+INSERT into department (name)
+VALUES ("Sales");
+INSERT into department (name)
+VALUES ("Engineering");
+INSERT into department (name)
+VALUES ("Finance");
+INSERT into department (name)
+VALUES ("Legal");
+INSERT into department (name)
+VALUES ("Manager");
+
+SELECT * from department; 
+
+INSERT into role (title, salary, department_id)
+values ("Sales Lead", 50000 , 1 );
+INSERT into role (title, salary, department_id)
+values ("Salesperson", 40000 , 1 );
+INSERT into role (title, salary, department_id)
+values ("Lead Engineer", 50000, 2 );
+INSERT into role (title, salary, department_id)
+values ("Accountant", 50000, 3 );
+INSERT into role (title, salar, department_id)
+values ("Legal", 50000, 4 );
+INSERT into role (title, salary, department_id)
+values ("Manager", 60000, 5 );
+
+SELECT * from role
+
+
+

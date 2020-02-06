@@ -71,7 +71,7 @@ function departmentView() {
 }
 
 function employeeView() {
-    let sqlStr = "SELECT first_name, last_name, title , salary FROM employee";
+    let sqlStr = "SELECT * FROM employee";
     // sqlStr += 
     // sqlStr += 
     connection.query(sqlStr, function(err, result) {

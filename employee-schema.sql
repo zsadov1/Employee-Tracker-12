@@ -61,5 +61,17 @@ values ("Manager", 60000, 5 );
 
 SELECT * from role
 
+INSERT into employee(first_name, last_name, role_id)
+values ("Zach" , "Sadovszky", 3);
+INSERT into employee(first_name, last_name, role_id)
+values ("Christian" , "Braynt", 4);
+INSERT into employee(first_name, last_name, role_id)
+values ("Mike" , "Levy", 5);
+INSERT into employee(first_name, last_name, role_id)
+values ("Jon" , "Angot", 6);
+INSERT into employee(first_name, last_name, role_id)
+values ("Gavin" , "Mcgrath", 7);
+INSERT into employee(first_name, last_name, role_id)
+values ("Ryan" , "Puillsbury", 8);
 
-
+SELECT * from employee 

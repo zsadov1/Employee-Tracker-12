@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS Employee_TrackerDB
+DROP DATABASE IF EXISTS Employee_TrackerDB;
 
-CREATE DATABASE Employee_TrackerDB
+CREATE DATABASE Employee_TrackerDB;
 
 
 CREATE TABLE department(
@@ -59,7 +59,7 @@ values ("Legal", 50000, 4 );
 INSERT into role (title, salary, department_id)
 values ("Manager", 60000, 5 );
 
-SELECT * from role
+SELECT * from role;
 
 INSERT into employee(first_name, last_name, role_id)
 values ("Zach" , "Sadovszky", 3);

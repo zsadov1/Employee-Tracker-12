@@ -241,11 +241,11 @@ async function addRole() {
         {
             name: 'title',
             message: 'What is the name of the role?'
-        }
+        },
         {
             name: 'salary',
             message: 'What is the salery of the role?'
-        }
+        },
         {
          type:'input',
          name:'department_id',

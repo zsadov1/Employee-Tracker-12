@@ -1,13 +1,119 @@
-const connection = require('./connection');
+
 const inquirier = require("inquirer");
+const connection = require('./db/connection');
 const consoleTable = require("console.table");
-const introJS = require('./intro');
-const viewJs = require('./view')
 
 
 
+const viewOptions = [
+    "View Departments",
+    "View Roles",
+    "View Employees",
+    "Update Employee",
+    "Add an Employee",
+    "Add a Department",
+    "Add a Role",
+    "Exit"
+];
 
-introJS = runSearch();
+const employeeOptions =[
+    "Zach Sadovszky",
+    "Christian Bryant",
+    "Micheal Levy",
+    "Jon Angot",
+    "Gavin Mcgrath",
+    "Ryan Pillsbury",
+    "Exit"
+
+];
+
+const updateOptions = [
+    "First Name",
+    "Last Name",
+    "Role",
+    "Exit"
+];
+
+function runSearch() {
+    inquirier.prompt ({
+        name:"action",
+        type: "list",
+        message: "What would you like to do?",
+        choices: viewOptions
+    })
+    .then(function(answer) {
+        switch(answer.action) {
+            case viewOptions[0]:
+                departmentView();
+                break;
+
+            case viewOptions[1]:
+                roleView();
+                break;
+
+            case viewOptions[2]:
+                employeeView();
+                break;
+
+            case viewOptions[3]:
+                updateEmployee();
+                break;
+
+            // case viewOptions[5]:
+            //     addEmployee();
+            //     break;
+            // case viewOptions[6]:
+            //     addDepartment();
+            //     break;
+            // case viewOptions[7]:
+            //     addRole();
+            //     break;
+            case viewOptions[8]:
+                exitApp();
+                break;
+        }
+    })
+}
+
+function departmentView() {
+    let sqlStr = 'SELECT * FROM department';
+    connection.query(sqlStr, function(err, result) {
+        if(err) throw err;
+
+        console.table(result)
+        runSearch();
+    })
+}
+
+function employeeView() {
+    let sqlStr = "SELECT * FROM employee";
+    // sqlStr += 
+    // sqlStr += 
+    connection.query(sqlStr, function(err, result) {
+        if(err) throw err;
+
+        console.table(result)
+        runSearch();
+    })
+}
+
+function roleView() {
+    let sqlStr = 'SELECT * FROM role';
+    connection.query(sqlStr, function(err, result) {
+        if(err) throw err;
+
+        console.table(result)
+        runSearch();
+    })
+}
+
+function exitApp() {
+    console.log("Goodbye!")
+    connection.end();
+    
+}
+
+runSearch();
 
 const updateEmployee = () => {
     function runUpdateSearch() {
@@ -19,4 +125,4 @@ const updateEmployee = () => {
         })
     }
     runUpdateSearch(); 
-};
+}

@@ -1,6 +1,7 @@
 const connection = require('./connection');
 const inquirier = require("inquirer");
 const consoleTable = require("console.table");
+const viewJs = require('./view')
 
 const viewOptions = [
     "View Departments",
@@ -65,7 +66,7 @@ const introJs = function runSearch() {
                 break;
             case viewOptions[7]:
                 addRole();
-                break
+                break;
         }
     })
 };

@@ -373,6 +373,7 @@ async function removeEmployee() {
     ]);
     await db.deleteEmployee(employeeId);
 }
+runSearch();
 
 
 

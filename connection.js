@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user:"root",
     password:"!@Galaxy",
-    database: "employee_trackdb"
+    database: "employees_trackdb"
 });
 
 connection.connect(function (err){
@@ -16,3 +16,4 @@ connection.connect(function (err){
 });
 
 module.exports = connection; 
+

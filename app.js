@@ -1,5 +1,5 @@
 const connection = require('./connection');
-const db = require('./index');
+const Db = require('./index');
 const { prompt } = require('inquirer');
 const table = require('console.table');
 
@@ -87,7 +87,7 @@ async function runSearch() {
             return quit();
             
     }
-}
+};
 
 // Add functions
 
@@ -168,23 +168,23 @@ async function addEmployee() {
 // View functions
 
 async function viewDepartment() {
-    const viewDepartmentData = await db.viewAllDepartments();
+    const viewDepartmentData = await Db.viewAllDepartments();
+       console.log('results' , viewDepartmentData);
+    
 
-    console.table(viewDepartmentData);
-
-}
+};
 
 async function viewRole() {
         const viewRoleData = await db.viewAllRoles();
     
     console.table(viewRoleData);
-}
+};
 
 async function viewEmployee() {
     const viewEmployeeData = await db.viewAllEmployees();
 
     console.table(viewEmployeeData);
-}
+};
 
 // Remove functions 
 
@@ -248,7 +248,6 @@ async function quit(){
 
 
 runSearch();
-
 
 
 

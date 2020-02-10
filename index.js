@@ -1,7 +1,7 @@
 const connection = require('./connection');
 
 
-class DB {
+class Db {
 	constructor(connection) {
 		this.connection = connection;
 	}
@@ -25,10 +25,16 @@ class DB {
 			' SELECT role.id, role.title, department.name, role.salary FROM role LEFT JOIN department on role.department_id = department.id'
 		);
 	}
-	viewAllDepartments() {
-		return this.connection.query(
-			' SELECT department.id, department.name, SUM (role.salary) FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id GROUP BY department.id, department.name'
-		);
+	  viewAllDepartments() {
+		const data = connection.query('SELECT * FROM department', function (error, results, fields) {
+			console.log('RESULTS', results);  
+			console.log('FIELDs', fields); 
+			console.log("ERROR", error);
+			return results;
+
+
+		   });
+		   return data; 
 	}
 	deleteEmployee(employeeId) {
 		return this.connection.query('DELETE FORM  employee WHERE id = ?', employeeId);
@@ -42,7 +48,7 @@ class DB {
 	}
 }
 
-module.exports = new DB(connection);
+module.exports = new Db(connection);
 
 
 
